@@ -58,3 +58,52 @@ print(translator1.translated_story(story1))
 # Set the availability of the translator
 translator1.set_availability(False)
 print(translator1.translated_story(story1))
+
+
+
+# question2
+class Recipe:
+    def __init__(self, uniqueIngredients, preparationTime, cookingMethod, nutritionalInfo):
+        self.uniqueIngredients = uniqueIngredients
+        self.preparationTime = preparationTime
+        self.cookingMethod = cookingMethod
+        self.nutritionalInfo = nutritionalInfo
+class MoroccanRecipe(Recipe):
+    def __init__(self, uniqueIngredients, preparationTime, cookingMethod, nutritionalInfo, spicy):
+        super().__init__(uniqueIngredients, preparationTime, cookingMethod, nutritionalInfo)
+        self.spicy = spicy
+
+    def Moroccan_chicken_tagine(self):
+        return f"The Moroccan Chicken Tagine is prepared using {self.spicy} and {self.uniqueIngredients} for {self.preparationTime}. It is cooked by {self.cookingMethod} to give {self.nutritionalInfo}."
+
+    def is_vegetarian(self):
+        if "chicken" not in self.uniqueIngredients and "beef" not in self.uniqueIngredients and "lamb" not in self.uniqueIngredients:
+            return True
+        else:
+            return False
+class NigerianRecipe(Recipe):
+    def __init__(self, uniqueIngredients, preparationTime, cookingMethod, nutritionalInfo, peprish):
+        super().__init__(uniqueIngredients, preparationTime, cookingMethod, nutritionalInfo)
+        self.peprish = peprish
+
+    def jollof_rice(self):
+        return f"The popular Nigerian Jollof Rice is prepared using {self.uniqueIngredients} for {self.preparationTime}, making it {self.peprish}. It's cooked by {self.cookingMethod} and is recommended because it has {self.nutritionalInfo}."
+
+    def is_spicy(self):
+        if "pepper" in self.uniqueIngredients or "chili" in self.uniqueIngredients:
+            return True
+        else:
+            return False
+class EthiopianRecipe(Recipe):
+    def __init__(self, uniqueIngredients, preparationTime, cookingMethod, nutritionalInfo, saucy):
+        super().__init__(uniqueIngredients, preparationTime, cookingMethod, nutritionalInfo)
+        self.saucy = saucy
+
+    def injera(self):
+        return f"Injera is cooked using {self.uniqueIngredients} for {self.preparationTime}, and you have to {self.cookingMethod} for it to be sweet. Injera is the best because it has {self.nutritionalInfo}."
+
+    def is_gluten_free(self):
+        if "teff flour" in self.uniqueIngredients:
+            return True
+        else:
+            return False
