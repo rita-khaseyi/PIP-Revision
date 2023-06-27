@@ -76,4 +76,98 @@ class Story {
   // Set the availability of the translator
   translator1.setAvailability(false);
   console.log(translator1.translatedStory(story1));
+  ////////////////////////////////////////////////////////////
+  //QUESTION 2
+  class Recipe {
+    constructor(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo) {
+      this.name = name;
+      this.country = country;
+      this.ingredients = ingredients;
+      this.preparationTime = preparationTime;
+      this.cookingMethod = cookingMethod;
+      this.nutritionInfo = nutritionInfo;
+    }
+  }
+  class MoroccanRecipe extends Recipe {
+    constructor(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo, spicy) {
+      super(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo);
+      this.spicy = spicy;
+    }
+  
+    moroccanChickenTangerine() {
+      if (this.ingredients.includes(this.cookingMethod)) {
+        return `The Moroccan food is prepared with ${this.ingredients} using ${this.cookingMethod}.`;
+      } else {
+        return `That is not Moroccan food.`;
+      }
+    }
+  }
+  
+  class NigerianRecipe extends Recipe {
+    constructor(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo, pepperish) {
+      super(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo);
+      this.pepperish = pepperish;
+    }
+  
+    prepare() {
+      if (this.preparationTime && this.nutritionInfo.includes(this.pepperish)) {
+        return `The Nigerian Jollof Rice is prepared with ${this.ingredients} for ${this.preparationTime}.
+        It has to be ${this.cookingMethod} for it to have ${this.nutritionInfo} and must have ${this.pepperish}.`;
+      } else {
+        return `That is not a well-prepared Jollof Rice.`;
+      }
+    }
+  }
+
+  class EthiopianRecipe extends Recipe{
+    constructor(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo,soft){
+      super(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo);
+      this.soft = soft
+    }
+    Injerameal(){
+      return `Injera is cooked using  ${this.ingredients} for ${this.preparationTime}.
+      It is sweet when ${this.cookingMethod} for it to have ${this.nutritionInfo} must have ${this.pepperish}`
+       
+  
+    }
+  }
+  const jollofRice = new NigerianRecipe(
+    "Jollof Rice",
+    "Nigeria",
+    ["rice", "tomatoes", "onions", "pepper", "oil"],
+    "1 hour",
+    "boiling",
+    "high in carbohydrates and vitamins",
+    true
+  );
+  
+  console.log(jollofRice.prepare());
+
+  // console.log(jollofRice.Nigerianjollofrice())
+ 
+  const Injera = new EthiopianRecipe(
+    "Injera",
+    "Ethiopa",
+    ["dough", "onions", "tomatoes", "apricots", "almonds"],
+    "2 hours",
+    "fried",
+    ["fat", "carbs", "vitamins"] ,
+    "yeast,carbs",
+    
+  );
+  console.log(Injera.Injerameal())
+
+
+  const moroccanChicken = new MoroccanRecipe(
+    "Moroccan Chicken with Tangerine",
+    "Morocco",
+    ["chicken", "tangerine", "onion", "garlic", "olive oil", "cumin", "coriander", "cinnamon", "paprika", "salt", "pepper"],
+    "1 hour",
+    "grilling",
+    "high in protein and vitamin C",
+    true
+  );
+  
+  console.log(moroccanChicken.moroccanChickenTangerine());
+  
   
