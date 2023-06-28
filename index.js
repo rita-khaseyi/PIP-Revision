@@ -76,4 +76,76 @@ class Story {
   // Set the availability of the translator
   translator1.setAvailability(false);
   console.log(translator1.translatedStory(story1));
+ 
   
+
+  // QUESTION 3
+
+  class Prey extends Species {
+  constructor(name, diet, lifespan, migrationPattern) {
+    super(name, diet, lifespan);
+    this.migrationPattern = migrationPattern;
+    this.caught = false;
+  }
+
+  migrate(destination) {
+    console.log(`${this.name} is migrating to ${destination} following ${this.migrationPattern}.`);
+  }
+
+  getCaught() {
+    this.caught = true;
+    console.log(`${this.name} got caught by a predator!`);
+  }
+}
+
+class Park {
+  constructor(name) {
+    this.name = name;
+    this.species = [];
+  }
+
+  addSpecies(species) {
+    this.species.push(species);
+  }
+
+  showSpecies() {
+    console.log(`Species in ${this.name}:`);
+    for (const species of this.species) {
+      console.log(`- ${species.name}`);
+    }
+  }
+
+  findPredators() {
+    const predators = this.species.filter(species => species instanceof Predator);
+    console.log(`Predators in ${this.name}:`);
+    for (const predator of predators) {
+      console.log(`- ${predator.name}`);
+    }
+  }
+
+  findPrey() {
+    const prey = this.species.filter(species => species instanceof Prey);
+    console.log(`Prey in ${this.name}:`);
+    for (const p of prey) {
+      console.log(`- ${p.name}`);
+    }
+  }
+}
+
+const lion = new Predator("Lion", "Carnivore", 15, "Ambush hunting");
+const zebra = new Prey("Zebra", "Herbivore", 20, "Seasonal migration");
+const gazelle = new Prey("Gazelle", "Herbivore", 12, "Long-distance migration");
+
+const park = new Park("Wildlife Park");
+park.addSpecies(lion);
+park.addSpecies(zebra);
+park.addSpecies(gazelle);
+
+park.showSpecies();
+park.findPredators();
+park.findPrey();
+
+lion.huntPrey(zebra);
+zebra.migrate("Grasslands");
+
+park.findPrey();
