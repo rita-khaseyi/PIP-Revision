@@ -76,6 +76,7 @@ class Story {
   // Set the availability of the translator
   translator1.setAvailability(false);
   console.log(translator1.translatedStory(story1));
+
   
 
   class Species {
@@ -166,4 +167,5 @@ class Story {
   zebra.migrate("Grasslands");
   
   park.findPrey();
+
   
