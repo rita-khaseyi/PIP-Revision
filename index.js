@@ -169,5 +169,52 @@ class Story {
   );
   
   console.log(moroccanChicken.moroccanChickenTangerine());
+  //question3
+  /////////////////////////////////////////////////////
+
+
+
+
+
+
+
+  
+  //question4
+  /////////////////////////////////////////////////////
+
+  class Artist {
+    constructor(name, country, musicalStyle, instruments) {
+      this.name = name;
+      this.country = country;
+      this.musicalStyle = musicalStyle;
+      this.instruments = instruments;
+    }
+  }
+  
+  class Performance extends Artist {
+    constructor(artist, startDateTime, endDateTime, stage) {
+      this.artist = artist;
+      this.startDateTime = startDateTime;
+      this.endDateTime = endDateTime;
+      this.stage = stage;
+    }
+    stageArrangements(people){
+     
+        if (stage ){
+  
+        }
+  
+     
+    }
+  }
+  
+  class Stage extends Artist{
+    constructor(name, capacity) {
+      this.name = name;
+      this.capacity = capacity;
+    }
+  }
+  
+
   
   
