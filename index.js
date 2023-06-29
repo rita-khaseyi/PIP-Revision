@@ -172,7 +172,48 @@ class Story {
   //question3
   /////////////////////////////////////////////////////
 
-
+  class Species {
+    constructor(name, diet, lifespan) {
+      this.name = name;
+      this.diet = diet;
+      this.lifespan = lifespan;
+    }
+      
+    displayInfo() {
+      console.log(`Name: ${this.name}`);
+      console.log(`Diet: ${this.diet}`);
+      console.log(`Lifespan: ${this.lifespan}`);
+    }
+  }
+  class Predator extends Species {
+    constructor(name, diet, lifespan, huntingMethod) {
+      super(name, diet, lifespan);
+      this.huntingMethod = huntingMethod;
+    }
+  
+    displayInfo() {
+      super.displayInfo();
+      console.log(`Hunting Method: ${this.huntingMethod}`);
+    }
+  }
+  class Prey extends Species {
+    constructor(name, diet, lifespan, migrationPattern) {
+      super(name, diet, lifespan);
+      this.migrationPattern = migrationPattern;
+    }
+  
+    displayInfo() {
+      super.displayInfo();
+      console.log(`Migration Pattern: ${this.migrationPattern}`);
+    }
+  }
+  
+  const lion = new Predator("Lion", "Carnivore", 15, "Stalking");
+  lion.displayInfo();
+  
+  const zebra = new Prey("Zebra", "Herbivore", 25, "Seasonal");
+  zebra.displayInfo();
+  
 
 
 
@@ -198,13 +239,13 @@ class Story {
       this.endDateTime = endDateTime;
       this.stage = stage;
     }
-    stageArrangements(people){
-     
-        if (stage ){
-  
-        }
-  
-     
+    stageArrangements(){
+      if (this.artist && this.musicalStyle.includes(this.instruments)) {
+        return `The kind of music played on ${this.stage}is Lingala.
+        It has to be ${this.startDateTime} to ${this.endDateTime}`;
+      } else {
+        return `That it is not time to play Lingala`;
+      }
     }
   }
   
@@ -213,6 +254,15 @@ class Story {
       this.name = name;
       this.capacity = capacity;
     }
+    stageCapacity(){
+      if (this.name === this.artist.includes(this.capacity)) {
+        return `The band is complete`
+      }
+      else{ 
+        return `The band is incomplete`
+      }
+    }
+
   }
   
 
