@@ -76,101 +76,8 @@ class Story {
   // Set the availability of the translator
   translator1.setAvailability(false);
   console.log(translator1.translatedStory(story1));
-  ////////////////////////////////////////////////////////////
-  //QUESTION 2
-  class Recipe {
-    constructor(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo) {
-      this.name = name;
-      this.country = country;
-      this.ingredients = ingredients;
-      this.preparationTime = preparationTime;
-      this.cookingMethod = cookingMethod;
-      this.nutritionInfo = nutritionInfo;
-    }
-  }
-  class MoroccanRecipe extends Recipe {
-    constructor(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo, spicy) {
-      super(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo);
-      this.spicy = spicy;
-    }
-  
-    moroccanChickenTangerine() {
-      if (this.ingredients.includes(this.cookingMethod)) {
-        return `The Moroccan food is prepared with ${this.ingredients} using ${this.cookingMethod}.`;
-      } else {
-        return `That is not Moroccan food.`;
-      }
-    }
-  }
-  
-  class NigerianRecipe extends Recipe {
-    constructor(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo, pepperish) {
-      super(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo);
-      this.pepperish = pepperish;
-    }
-  
-    prepare() {
-      if (this.preparationTime && this.nutritionInfo.includes(this.pepperish)) {
-        return `The Nigerian Jollof Rice is prepared with ${this.ingredients} for ${this.preparationTime}.
-        It has to be ${this.cookingMethod} for it to have ${this.nutritionInfo} and must have ${this.pepperish}.`;
-      } else {
-        return `That is not a well-prepared Jollof Rice.`;
-      }
-    }
-  }
 
-  class EthiopianRecipe extends Recipe{
-    constructor(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo,soft){
-      super(name, country, ingredients, preparationTime, cookingMethod, nutritionInfo);
-      this.soft = soft
-    }
-    Injerameal(){
-      return `Injera is cooked using  ${this.ingredients} for ${this.preparationTime}.
-      It is sweet when ${this.cookingMethod} for it to have ${this.nutritionInfo} must have ${this.pepperish}`
-       
   
-    }
-  }
-  const jollofRice = new NigerianRecipe(
-    "Jollof Rice",
-    "Nigeria",
-    ["rice", "tomatoes", "onions", "pepper", "oil"],
-    "1 hour",
-    "boiling",
-    "high in carbohydrates and vitamins",
-    true
-  );
-  
-  console.log(jollofRice.prepare());
-
-  // console.log(jollofRice.Nigerianjollofrice())
- 
-  const Injera = new EthiopianRecipe(
-    "Injera",
-    "Ethiopa",
-    ["dough", "onions", "tomatoes", "apricots", "almonds"],
-    "2 hours",
-    "fried",
-    ["fat", "carbs", "vitamins"] ,
-    "yeast,carbs",
-    
-  );
-  console.log(Injera.Injerameal())
-
-
-  const moroccanChicken = new MoroccanRecipe(
-    "Moroccan Chicken with Tangerine",
-    "Morocco",
-    ["chicken", "tangerine", "onion", "garlic", "olive oil", "cumin", "coriander", "cinnamon", "paprika", "salt", "pepper"],
-    "1 hour",
-    "grilling",
-    "high in protein and vitamin C",
-    true
-  );
-  
-  console.log(moroccanChicken.moroccanChickenTangerine());
-  //question3
-  /////////////////////////////////////////////////////
 
   class Species {
     constructor(name, diet, lifespan) {
@@ -178,94 +85,84 @@ class Story {
       this.diet = diet;
       this.lifespan = lifespan;
     }
-      
-    displayInfo() {
-      console.log(`Name: ${this.name}`);
-      console.log(`Diet: ${this.diet}`);
-      console.log(`Lifespan: ${this.lifespan}`);
-    }
   }
+  
   class Predator extends Species {
     constructor(name, diet, lifespan, huntingMethod) {
       super(name, diet, lifespan);
       this.huntingMethod = huntingMethod;
     }
   
-    displayInfo() {
-      super.displayInfo();
-      console.log(`Hunting Method: ${this.huntingMethod}`);
+    huntPrey(prey) {
+      console.log(`${this.name} is hunting ${prey.name} using ${this.huntingMethod}.`);
+      prey.getCaught();
     }
   }
+  
   class Prey extends Species {
     constructor(name, diet, lifespan, migrationPattern) {
       super(name, diet, lifespan);
       this.migrationPattern = migrationPattern;
+      this.caught = false;
     }
   
-    displayInfo() {
-      super.displayInfo();
-      console.log(`Migration Pattern: ${this.migrationPattern}`);
+    migrate(destination) {
+      console.log(`${this.name} is migrating to ${destination} following ${this.migrationPattern}.`);
+    }
+  
+    getCaught() {
+      this.caught = true;
+      console.log(`${this.name} got caught by a predator!`);
     }
   }
   
-  const lion = new Predator("Lion", "Carnivore", 15, "Stalking");
-  lion.displayInfo();
-  
-  const zebra = new Prey("Zebra", "Herbivore", 25, "Seasonal");
-  zebra.displayInfo();
-  
-
-
-
-
-
-  
-  //question4
-  /////////////////////////////////////////////////////
-
-  class Artist {
-    constructor(name, country, musicalStyle, instruments) {
+  class Park {
+    constructor(name) {
       this.name = name;
-      this.country = country;
-      this.musicalStyle = musicalStyle;
-      this.instruments = instruments;
+      this.species = [];
     }
-  }
   
-  class Performance extends Artist {
-    constructor(artist, startDateTime, endDateTime, stage) {
-      this.artist = artist;
-      this.startDateTime = startDateTime;
-      this.endDateTime = endDateTime;
-      this.stage = stage;
+    addSpecies(species) {
+      this.species.push(species);
     }
-    stageArrangements(){
-      if (this.artist && this.musicalStyle.includes(this.instruments)) {
-        return `The kind of music played on ${this.stage}is Lingala.
-        It has to be ${this.startDateTime} to ${this.endDateTime}`;
-      } else {
-        return `That it is not time to play Lingala`;
+  
+    showSpecies() {
+      console.log(`Species in ${this.name}:`);
+      for (const species of this.species) {
+        console.log(`- ${species.name}`);
+      }
+    }
+  
+    findPredators() {
+      const predators = this.species.filter(species => species instanceof Predator);
+      console.log(`Predators in ${this.name}:`);
+      for (const predator of predators) {
+        console.log(`- ${predator.name}`);
+      }
+    }
+  
+    findPrey() {
+      const prey = this.species.filter(species => species instanceof Prey);
+      console.log(`Prey in ${this.name}:`);
+      for (const p of prey) {
+        console.log(`- ${p.name}`);
       }
     }
   }
   
-  class Stage extends Artist{
-    constructor(name, capacity) {
-      this.name = name;
-      this.capacity = capacity;
-    }
-    stageCapacity(){
-      if (this.name === this.artist.includes(this.capacity)) {
-        return `The band is complete`
-      }
-      else{ 
-        return `The band is incomplete`
-      }
-    }
-
-  }
+  const lion = new Predator("Lion", "Carnivore", 15, "Ambush hunting");
+  const zebra = new Prey("Zebra", "Herbivore", 20, "Seasonal migration");
+  const gazelle = new Prey("Gazelle", "Herbivore", 12, "Long-distance migration");
   
-
+  const park = new Park("Wildlife Park");
+  park.addSpecies(lion);
+  park.addSpecies(zebra);
+  park.addSpecies(gazelle);
   
+  park.showSpecies();
+  park.findPredators();
+  park.findPrey();
+  
+  console.log(moroccanChicken.moroccanChickenTangerine());
   
   
