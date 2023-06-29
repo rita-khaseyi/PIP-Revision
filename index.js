@@ -163,9 +163,6 @@ class Story {
   park.findPredators();
   park.findPrey();
   
-  lion.huntPrey(zebra);
-  zebra.migrate("Grasslands");
+  console.log(moroccanChicken.moroccanChickenTangerine());
   
-  park.findPrey();
-
   
