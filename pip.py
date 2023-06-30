@@ -137,110 +137,55 @@ park.find_prey()
 
 
 class Artist:
-    def __init__(self, name, country):
+    def __init__(self, name, country, instruments):
         self.name = name
         self.country = country
+        self.instruments = instruments
 
-    def __str__(self):
-        return f"{self.name} from {self.country}"
+    def play_instrument(self, instrument):
+        if instrument in self.instruments:
+            return f"{self.name} is playing {instrument}."
+        else:
+            return f"{self.name} does not play {instrument}."
+class Performance(Artist):
+    def __init__(self, artist, starting_time, finish_time):
+        super().__init__(artist.name, artist.country, artist.instruments)
+        self.starting_time = starting_time
+        self.finish_time = finish_time
 
-
-class Performance:
-    def __init__(self, artist, start_time, end_time):
-        self.artist = artist
-        self.start_time = start_time
-        self.end_time = end_time
-
-    def __str__(self):
-        return f"Performance by {self.artist}, {self.start_time} to {self.end_time}"
-
+    def is_performance_over(self, current_time):
+        if current_time >= self.finish_time:
+            return True
+        else:
+            return False
 
 class Stage:
-    def __init__(self, name, capacity):
-        self.name = name
-        self.capacity = capacity
-        self.performances = []
-
-    def add_performance(self, performance):
+    def__init__(self,name,capacity):
+        self.name= name
+        self.capacity
+        self.performances= []
+    
+    def add_performance(self,performance):
         self.performances.append(performance)
-
-    def is_available(self, start_time, end_time):
-        for performance in self.performances:
-            if (start_time >= performance.start_time and start_time < performance.end_time) or \
-                    (end_time > performance.start_time and end_time <= performance.end_time) or \
-                    (start_time <= performance.start_time and end_time >= performance.end_time):
-                return False
-        return True
-
-    def __str__(self):
-        return f"Stage: {self.name}, Capacity: {self.capacity}, Performances: {len(self.performances)}"
 
 
 class Festival:
-    def __init__(self, name):
-        self.name = name
-        self.stages = []
-
-    def add_stage(self, stage):
+    def __init__(self):
+        self.stages=[]
+    
+    def add_stage(self,stage):
         self.stages.append(stage)
 
-    def schedule_performance(self, performance):
+
+    def add_performance(self,performance):
         for stage in self.stages:
-            if stage.is_available(performance.start_time, performance.end_time):
+            if len(stage.performance)==1:
+                stage.add_performance(performance)
+                return True
+            elif performance.starting_time>=stage.performance[-2].finish_time:
                 stage.add_performance(performance)
                 return True
         return False
 
-    def print_schedule(self):
-        print(f"--- {self.name} Schedule ---")
-        for stage in self.stages:
-            print(f"\n{stage.name}:")
-            for performance in stage.performances:
-                print(performance)
-
-# Create artists
-artist1 = Artist("Femi Kuti", "Nigeria")
-artist2 = Artist("Salif Keita", "Mali")
-artist3 = Artist("Angelique Kidjo", "Benin")
-
-# Create performances
-performance1 = Performance(artist1, "18:00", "19:30")
-performance2 = Performance(artist2, "20:00", "21:30")
-performance3 = Performance(artist3, "19:00", "20:30")
-performance4 = Performance(artist2, "22:00", "23:30")
-
-# Create stages
-stage1 = Stage("Main Stage", 5000)
-stage2 = Stage("Acoustic Stage", 1000)
-
-# Create festival
-festival = Festival("Pan-African Music Festival")
-
-# Add stages to festival
-festival.add_stage(stage1)
-festival.add_stage(stage2)
-
-# Schedule performances
-if festival.schedule_performance(performance1):
-    print(f"Performance by {performance1.artist} scheduled successfully.")
-else:
-    print(f"Unable to schedule performance by {performance1.artist}.")
-if festival.schedule_performance(performance2):
-    print(f"Performance by {performance2.artist} scheduled successfully.")
-else:
-    print(f"Unable to schedule performance by {performance2.artist}.")
-if festival.schedule_performance(performance3):
-    print(f"Performance by {performance3.artist} scheduled successfully.")
-else:
-    print(f"Unable to schedule performance by {performance3.artist}.")
-if festival.schedule_performance(performance4):
-    print(f"Performance by {performance4.artist} scheduled successfully.")
-else:
-    print(f"Unable to schedule performance by {performance4.artist}.")
-
-# Print festival schedule
-festival.print_schedule()
-
-# QUESTION 4
-
+    
 
