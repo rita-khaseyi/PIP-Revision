@@ -165,4 +165,25 @@ class Story {
   
   console.log(moroccanChicken.moroccanChickenTangerine());
   
-  
+  // Create a class called Product with attributes for name, price, and quantity.
+// Implement a method to calculate the total value of the product (price * quantity).
+// Create multiple objects of the Product class and calculate their total values.
+
+class Product{
+  constructor(name,price,quantity){
+    this.name = name
+    this.price = price
+    this.quantity = quantity
+  }
+  totalValue = () => {
+    if(this.price >0 && this.quantity > 0){
+      return`  THe total value is equal to ${this.price * this.quantity} `
+    }
+    else {
+      return "the total value of the item is invalid"
+    }
+
+  }
+}
+   let product = new Product ("mango",122,6)
+   console.log(product.totalValue())
