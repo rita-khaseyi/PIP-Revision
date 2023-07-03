@@ -187,5 +187,24 @@ class Festival:
                 return True
         return False
 
+
+class Product:
+    def __init__(self,name,price,quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def total_value(self):
+        if self.price > 0 and self.quantity > 0:
+            return f"The total price is {self.price * self.quantity}$"
+
+        else:
+            return f"The total price is invalid"
+
+product = Product("apple",122,2)
+print(product.total_value())
+product1= Product("mango",0,0)
+print(product1.total_value())
+        
     
 
